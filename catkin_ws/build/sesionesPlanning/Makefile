@@ -56,6 +56,29 @@ CMAKE_BINARY_DIR = /home/sergio/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -88,17 +111,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -110,28 +122,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/strip
+install/strip/fast: install/strip
 
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -405,6 +405,36 @@ moving_obstacles/fast:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/moving_obstacles.dir/build.make sesionesPlanning/CMakeFiles/moving_obstacles.dir/build
 .PHONY : moving_obstacles/fast
 
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/publish_goal.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/publish_goal.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/publish_goal.dir/rule
+
+# Convenience name for target.
+publish_goal: sesionesPlanning/CMakeFiles/publish_goal.dir/rule
+
+.PHONY : publish_goal
+
+# fast build rule for target.
+publish_goal/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/publish_goal.dir/build.make sesionesPlanning/CMakeFiles/publish_goal.dir/build
+.PHONY : publish_goal/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/initial_position.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/initial_position.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/initial_position.dir/rule
+
+# Convenience name for target.
+initial_position: sesionesPlanning/CMakeFiles/initial_position.dir/rule
+
+.PHONY : initial_position
+
+# fast build rule for target.
+initial_position/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/build
+.PHONY : initial_position/fast
+
 src/assembling_clouds.o: src/assembling_clouds.cpp.o
 
 .PHONY : src/assembling_clouds.o
@@ -513,12 +543,68 @@ src/mueverobot_apunto.cpp.s:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build.make sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/src/mueverobot_apunto.cpp.s
 .PHONY : src/mueverobot_apunto.cpp.s
 
+src/publish_goal.o: src/publish_goal.cpp.o
+
+.PHONY : src/publish_goal.o
+
+# target to build an object file
+src/publish_goal.cpp.o:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/publish_goal.dir/build.make sesionesPlanning/CMakeFiles/publish_goal.dir/src/publish_goal.cpp.o
+.PHONY : src/publish_goal.cpp.o
+
+src/publish_goal.i: src/publish_goal.cpp.i
+
+.PHONY : src/publish_goal.i
+
+# target to preprocess a source file
+src/publish_goal.cpp.i:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/publish_goal.dir/build.make sesionesPlanning/CMakeFiles/publish_goal.dir/src/publish_goal.cpp.i
+.PHONY : src/publish_goal.cpp.i
+
+src/publish_goal.s: src/publish_goal.cpp.s
+
+.PHONY : src/publish_goal.s
+
+# target to generate assembly for a file
+src/publish_goal.cpp.s:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/publish_goal.dir/build.make sesionesPlanning/CMakeFiles/publish_goal.dir/src/publish_goal.cpp.s
+.PHONY : src/publish_goal.cpp.s
+
+src/publish_initial_position.o: src/publish_initial_position.cpp.o
+
+.PHONY : src/publish_initial_position.o
+
+# target to build an object file
+src/publish_initial_position.cpp.o:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/src/publish_initial_position.cpp.o
+.PHONY : src/publish_initial_position.cpp.o
+
+src/publish_initial_position.i: src/publish_initial_position.cpp.i
+
+.PHONY : src/publish_initial_position.i
+
+# target to preprocess a source file
+src/publish_initial_position.cpp.i:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/src/publish_initial_position.cpp.i
+.PHONY : src/publish_initial_position.cpp.i
+
+src/publish_initial_position.s: src/publish_initial_position.cpp.s
+
+.PHONY : src/publish_initial_position.s
+
+# target to generate assembly for a file
+src/publish_initial_position.cpp.s:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/src/publish_initial_position.cpp.s
+.PHONY : src/publish_initial_position.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install"
+	@echo "... rebuild_cache"
 	@echo "... install/local"
 	@echo "... list_install_components"
 	@echo "... sesionesPlanning_gennodejs"
@@ -538,10 +624,10 @@ help:
 	@echo "... sesionesPlanning_generate_messages_lisp"
 	@echo "... edit_cache"
 	@echo "... moving_obstacles"
-	@echo "... install/strip"
+	@echo "... publish_goal"
+	@echo "... initial_position"
 	@echo "... test"
-	@echo "... rebuild_cache"
-	@echo "... install"
+	@echo "... install/strip"
 	@echo "... src/assembling_clouds.o"
 	@echo "... src/assembling_clouds.i"
 	@echo "... src/assembling_clouds.s"
@@ -554,6 +640,12 @@ help:
 	@echo "... src/mueverobot_apunto.o"
 	@echo "... src/mueverobot_apunto.i"
 	@echo "... src/mueverobot_apunto.s"
+	@echo "... src/publish_goal.o"
+	@echo "... src/publish_goal.i"
+	@echo "... src/publish_goal.s"
+	@echo "... src/publish_initial_position.o"
+	@echo "... src/publish_initial_position.i"
+	@echo "... src/publish_initial_position.s"
 .PHONY : help
 
 

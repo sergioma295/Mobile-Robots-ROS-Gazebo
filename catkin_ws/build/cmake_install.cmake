@@ -124,6 +124,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/sergio/catkin_ws/build/turtlebot_simulator/turtlebot_stdr/cmake_install.cmake")
   include("/home/sergio/catkin_ws/build/robots_moviles_package/cmake_install.cmake")
   include("/home/sergio/catkin_ws/build/slam_gmapping/gmapping/cmake_install.cmake")
+  include("/home/sergio/catkin_ws/build/robot_pose_ekf/cmake_install.cmake")
   include("/home/sergio/catkin_ws/build/sesionesPlanning/cmake_install.cmake")
   include("/home/sergio/catkin_ws/build/turtlebot_teleop/cmake_install.cmake")
 

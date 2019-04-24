@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+
+xterm -hold -e "roslaunch turtlebot_gazebo map1_world.launch" &
+sleep 8
+xterm -hold -e "roslaunch turtlebot_rviz_launchers view_navigation.launch" &
+sleep 8
+xterm -hold -e "roslaunch turtlebot_navigation gmapping_demo.launch" &
+sleep 10
+xterm -hold -e "roslaunch sesionesPlanning moving_and_obstacles.launch" &
+sleep 10000000000
+
+
+
