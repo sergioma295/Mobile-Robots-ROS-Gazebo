@@ -1,0 +1,7 @@
+image: /home/sergio/catkin_ws/src/sesionesPlanning/maps_saved/map1_0.pgm
+resolution: 0.050000
+origin: [-12.200000, -12.200000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+
