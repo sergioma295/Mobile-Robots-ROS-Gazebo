@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+
+xterm -hold -e "roslaunch turtlebot_gazebo map1_world.launch" &
+sleep 8
+xterm -hold -e "roslaunch turtlebot_rviz_launchers view_navigation.launch" &
+sleep 8
+#xterm -hold -e "roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/tunhel/catkin_ws/src/sesionesPlanning/maps_saved/map1_0.yaml" &
+sleep 10000000000
+
+
+
