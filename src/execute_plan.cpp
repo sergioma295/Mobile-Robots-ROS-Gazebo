@@ -1,5 +1,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "std_msgs/UInt8MultiArray.h"
+#include "std_msgs/Bool.h"
 #include "sensor_msgs/LaserScan.h"
 #include "std_msgs/Float64.h"
 #include "geometry_msgs/Twist.h"
@@ -18,6 +20,9 @@ double angulo = 0;
 float alpha = 5;
 bool danger = false;
 ros::Publisher mueve_robot;
+
+
+bool moverEnDireccion(int direccion);
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
@@ -40,6 +45,16 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 	danger = true;
    else
 	danger = false;
+
+}
+
+void planCallback(const std_msgs::UInt8MultiArray::ConstPtr& msg)
+{
+
+	for(int i=0; i<msg->layout.data_offset;i++)
+
+		moverEnDireccion(msg->data[i]);
+
 
 }
 
@@ -82,7 +97,7 @@ void odomCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg)
 
 void avanza(float distancia){
 	geometry_msgs::Twist msg;
-    msg.linear.x = 0.3;
+    msg.linear.x = 0.2;
 //    ROS_INFO("Enviando %f como velocidad en x", msg.linear.x);
     mueve_robot.publish(msg);
     
@@ -136,7 +151,7 @@ bool ponteEnAngulo(double anguloGiro){
 	if ((angulo_actual > angulo_final_giro) && ((angulo_actual - angulo_final_giro) < 180)){
 		signo = -1;
 	}
-    msg.angular.z = 0.2*signo;
+    msg.angular.z = 0.1*signo;
     
 //    ROS_INFO("Enviando %f como velocidad en z", msg.angular.z);
  
@@ -168,7 +183,7 @@ bool moverEnDireccion(int direccion)
 		//cout << "Este es el caso 0" << endl;
 		//cout << "Voy a girar 90 grados" << endl;
 		ponteEnAngulo(90);
-		avanza(1);
+		avanza(0.95);
 	  break;
 	  case 1:
 		ponteEnAngulo(45);
@@ -176,7 +191,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 2:
 		ponteEnAngulo(0);
-		avanza(1);
+		avanza(0.95);
 	  break;
 	  case 3:
 		ponteEnAngulo(315);
@@ -184,7 +199,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 4:
 		ponteEnAngulo(270);
-		avanza(1);
+		avanza(0.95);
 	  break;
 	  case 5:
 		ponteEnAngulo(225);
@@ -192,7 +207,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 6:
 		ponteEnAngulo(180);
-		avanza(1);
+		avanza(0.95);
 	  break;
 	  case 7:
 		ponteEnAngulo(135);
@@ -220,62 +235,29 @@ int main(int argc, char **argv)
   srand(time(NULL));
 
   mueve_robot = n.advertise<geometry_msgs::Twist>("mobile_base/commands/velocity", 1000);
+  ros::Publisher calcula_camino = n.advertise<std_msgs::Bool>("/startMovement", 1000);
+  ros::Duration(0.5).sleep(); // sleep for half a second
 
   ros::Subscriber scan_subs = n.subscribe("/scan", 1000, scanCallback);
   ros::Subscriber odom_subs = n.subscribe("/robot_pose_ekf/odom_combined", 1000, odomCallback);
 
+  ros::Subscriber plan_subs = n.subscribe("/executePlan", 1000, planCallback);
+
   ros::Rate loop_rate(10);
 
-  const int options[4] = {0,4,6,2};
-  int direccion = 0;
-  int contador = 0;
-  int o;
+
+//Llamo a Matlab para que calcule el camino
+	std_msgs::Bool s;
+	s.data = true;
+
+	calcula_camino.publish(s);
+  ros::Duration(0.5).sleep(); // sleep for half a second
+
   while (ros::ok())
   {
     
 
     ros::spinOnce();
-
-
-    if(danger) {
-      o = getOrientation();
-	 cout << endl;
-	 cout << "ORIENTATION: " << o;
-	 cout << " DANGER: " << danger;
-	 switch(o) {
-
-		case 0:
-		case 3:
-			if((rand() % 10 +1) > 2)
-				direccion = 0;
-			else
-				direccion = 4;
-			break;
-		case 1:
-		case 2:
-			if((rand() % 10 +1) > 5)
-				direccion = 6;
-			else
-				direccion = 2;
-			break;			
-
-      }
-      contador = 0;
-    } else {
-       contador++;
-
-       if(contador > 3){
-	    int index = rand()%4;
-		direccion = options[index]; 
-		contador = 0;
-       }
-     }
-
-    cout << "DIRECCION ESCOGIDA: " << direccion << endl;
-    
-    moverEnDireccion(direccion);
-
-    loop_rate.sleep();
    
   }
 

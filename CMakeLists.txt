@@ -133,6 +133,7 @@ include_directories(
 ## Declare a C++ executable
 #add_executable(mueverobot_apunto src/mueverobot_apunto.cpp)
 add_executable(moving_obstacles src/moving_detecting_obstacles.cpp)
+add_executable(execute_plan src/execute_plan.cpp)
 #add_executable(detectObstacles src/detectObstacles.cpp)
 #add_executable(assemble_cloud src/assembling_clouds.cpp)
 add_executable(reading_map src/readMap.cpp)
@@ -143,6 +144,7 @@ add_executable(publish_goal src/publish_goal.cpp)
 ## same as for the library above
 #add_dependencies(mueverobot_apunto ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(publish_goal ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(execute_plan ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(moving_obstacles ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 #add_dependencies(detectObstacles ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 #add_dependencies(assemble_cloud ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
@@ -158,6 +160,11 @@ add_dependencies(reading_map ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORT
  target_link_libraries(moving_obstacles
    ${catkin_LIBRARIES}
  )
+
+ target_link_libraries(execute_plan
+   ${catkin_LIBRARIES}
+ )
+
 # target_link_libraries(detectObstacles
 #   ${catkin_LIBRARIES}
 # )
