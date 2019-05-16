@@ -23,6 +23,7 @@ ros::Publisher mueve_robot;
 
 
 bool moverEnDireccion(int direccion);
+bool ponteEnAngulo(double anguloGiro);
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
@@ -51,11 +52,12 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 void planCallback(const std_msgs::UInt8MultiArray::ConstPtr& msg)
 {
 
-	for(int i=0; i<msg->layout.data_offset;i++)
-
+	for(int i=0; i<msg->layout.data_offset;i++) {
 		moverEnDireccion(msg->data[i]);
+		ros::spinOnce();
+	}
 
-
+		ponteEnAngulo(0);
 }
 
 int getOrientation()
@@ -71,7 +73,7 @@ int getOrientation()
 	if(angulo_sin_signo > -alpha and angulo_sin_signo < alpha) d = 0;
 	else if (angulo_sin_signo > 90-alpha and angulo_sin_signo < 90+alpha) d = 1;
 	else if (angulo_sin_signo > 180-alpha and angulo_sin_signo <  180+alpha) d = 2;
-	else if (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha) {cout << "eoo" << endl; d = 3;}
+	else if (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha)  d = 3;
 
      cout << "D: " << d << " B: " << (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha) <<  endl;
      return d;
@@ -97,7 +99,7 @@ void odomCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg)
 
 void avanza(float distancia){
 	geometry_msgs::Twist msg;
-    msg.linear.x = 0.2;
+    msg.linear.x = 0.3;
 //    ROS_INFO("Enviando %f como velocidad en x", msg.linear.x);
     mueve_robot.publish(msg);
     
@@ -151,7 +153,7 @@ bool ponteEnAngulo(double anguloGiro){
 	if ((angulo_actual > angulo_final_giro) && ((angulo_actual - angulo_final_giro) < 180)){
 		signo = -1;
 	}
-    msg.angular.z = 0.1*signo;
+    msg.angular.z = 0.15*signo;
     
 //    ROS_INFO("Enviando %f como velocidad en z", msg.angular.z);
  
@@ -183,7 +185,7 @@ bool moverEnDireccion(int direccion)
 		//cout << "Este es el caso 0" << endl;
 		//cout << "Voy a girar 90 grados" << endl;
 		ponteEnAngulo(90);
-		avanza(0.95);
+		avanza(1);
 	  break;
 	  case 1:
 		ponteEnAngulo(45);
@@ -191,7 +193,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 2:
 		ponteEnAngulo(0);
-		avanza(0.95);
+		avanza(1);
 	  break;
 	  case 3:
 		ponteEnAngulo(315);
@@ -199,7 +201,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 4:
 		ponteEnAngulo(270);
-		avanza(0.95);
+		avanza(1);
 	  break;
 	  case 5:
 		ponteEnAngulo(225);
@@ -207,7 +209,7 @@ bool moverEnDireccion(int direccion)
 	  break;
 	  case 6:
 		ponteEnAngulo(180);
-		avanza(0.95);
+		avanza(1);
 	  break;
 	  case 7:
 		ponteEnAngulo(135);
@@ -228,7 +230,7 @@ bool moverEnDireccion(int direccion)
 int main(int argc, char **argv)
 {
   
-  ros::init(argc, argv, "moving_obstacles");
+  ros::init(argc, argv, "path_planning");
 
   ros::NodeHandle n;
 

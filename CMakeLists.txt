@@ -135,7 +135,7 @@ include_directories(
 add_executable(moving_obstacles src/moving_detecting_obstacles.cpp)
 add_executable(execute_plan src/execute_plan.cpp)
 #add_executable(detectObstacles src/detectObstacles.cpp)
-#add_executable(assemble_cloud src/assembling_clouds.cpp)
+add_executable(assemble_cloud src/assembling_clouds.cpp)
 add_executable(reading_map src/readMap.cpp)
 add_executable(initial_position src/publish_initial_position.cpp)
 add_executable(publish_goal src/publish_goal.cpp)
@@ -147,7 +147,7 @@ add_dependencies(publish_goal ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPOR
 add_dependencies(execute_plan ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(moving_obstacles ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 #add_dependencies(detectObstacles ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-#add_dependencies(assemble_cloud ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(assemble_cloud ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(initial_position ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(reading_map ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 ## Specify libraries to link a library or executable target against 
@@ -168,9 +168,9 @@ add_dependencies(reading_map ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORT
 # target_link_libraries(detectObstacles
 #   ${catkin_LIBRARIES}
 # )
-# target_link_libraries(assemble_cloud
-#   ${catkin_LIBRARIES}
-# )
+ target_link_libraries(assemble_cloud
+   ${catkin_LIBRARIES}
+ )
  target_link_libraries(publish_goal
    ${catkin_LIBRARIES}
  )
