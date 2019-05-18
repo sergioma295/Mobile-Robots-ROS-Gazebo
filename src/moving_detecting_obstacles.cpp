@@ -9,6 +9,7 @@
 #include "sesionesPlanning/apunto.h"
 #include <tf/tf.h>
 #include <iostream>
+#include "std_msgs/Float32.h"
 
 using namespace std;
 
@@ -18,6 +19,17 @@ double angulo = 0;
 float alpha = 7;
 bool danger = false;
 ros::Publisher mueve_robot;
+bool end = false;
+
+float p = 200;
+
+void mapCallback(const std_msgs::Float32::ConstPtr& msg)
+{
+	if(msg->data > p) {
+		cout << "data " << msg->data << endl;
+		end = true;
+		exit(1);} // sleep for half a second}
+}
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
@@ -223,6 +235,7 @@ int main(int argc, char **argv)
 
   ros::Subscriber scan_subs = n.subscribe("/scan", 1000, scanCallback);
   ros::Subscriber odom_subs = n.subscribe("/robot_pose_ekf/odom_combined", 1000, odomCallback);
+  ros::Subscriber map_explored = n.subscribe("/percentageExplored", 1000, mapCallback);
 
   ros::Rate loop_rate(10);
 
@@ -232,75 +245,76 @@ int main(int argc, char **argv)
   int o;
 	int limit = 4;
 	bool first_time = true;
-  while (ros::ok())
-  {
-    
+	
+		while (ros::ok())
+		{
+			if(end) return 0;	  
 
-    ros::spinOnce();
-
-
-    if(danger) {
-		   o = getOrientation();
-//			 cout << endl;
-			 cout << "ORIENTATION: " << o << endl;
-//			 cout << " DANGER: " << danger << endl;
-			 switch(o) {
-
-				case 0:
-				case 2:
-					if((rand() % 10 +1) > 5) {
-						cout << "0" << endl;
-						direccion = 0;
-						moverEnDireccion(0);
-						if(danger) { cout << "4" << endl;moverEnDireccion(4);direccion = 4;}
-					}
-					else {
-						cout << "4" << endl;
-						moverEnDireccion(4);direccion = 4;
-						if(danger)  { cout << "0" << endl;moverEnDireccion(0);direccion = 0;}
-					}
-					break;
-				case 1:
-				case 3:
-					if((rand() % 10 +1) > 5) {
-						cout << "6" << endl;
-						if(first_time) { moverEnDireccion(2);direccion=2;cout << "2 first" << endl; first_time=false;break;}
-						moverEnDireccion(6);direccion = 6;
-						if(danger)  { cout << "2" << endl;moverEnDireccion(2);direccion = 2;}
-					}
-					else {
-						cout << "2" << endl;
-						moverEnDireccion(2);direccion = 2;
-						if(danger)  { cout << "6" << endl;moverEnDireccion(6);direccion = 6;}
-					}
-
-					break;			
-				  }
-				  contador = 0;
-		  } else {
-				   contador++;
-//					 cout << "99" << endl;
-
-//				   if(contador >= limit){
-//							int index = rand()%4;
-//							limit = rand()%6+2;
-//							direccion = options[index];
-//							
+		  ros::spinOnce();
 
 
-//							contador = 0;
-//				   }
-						moverEnDireccion(direccion); 
-				 }
+		  if(danger) {
+				 o = getOrientation();
+	//			 cout << endl;
+				 cout << "ORIENTATION: " << o << endl;
+	//			 cout << " DANGER: " << danger << endl;
+				 switch(o) {
 
-//		  cout << "DIRECCION ESCOGIDA: " << direccion << endl;
-		  
+					case 0:
+					case 2:
+						if((rand() % 10 +1) > 5) {
+							cout << "0" << endl;
+							direccion = 0;
+							moverEnDireccion(0);
+							if(danger) { cout << "4" << endl;moverEnDireccion(4);direccion = 4;}
+						}
+						else {
+							cout << "4" << endl;
+							moverEnDireccion(4);direccion = 4;
+							if(danger)  { cout << "0" << endl;moverEnDireccion(0);direccion = 0;}
+						}
+						break;
+					case 1:
+					case 3:
+						if((rand() % 10 +1) > 5) {
+							cout << "6" << endl;
+							if(first_time) { moverEnDireccion(2);direccion=2;cout << "2 first" << endl; first_time=false;break;}
+							moverEnDireccion(6);direccion = 6;
+							if(danger)  { cout << "2" << endl;moverEnDireccion(2);direccion = 2;}
+						}
+						else {
+							cout << "2" << endl;
+							moverEnDireccion(2);direccion = 2;
+							if(danger)  { cout << "6" << endl;moverEnDireccion(6);direccion = 6;}
+						}
+
+						break;			
+						}
+						contador = 0;
+				} else {
+						 contador++;
+	//					 cout << "99" << endl;
+
+	//				   if(contador >= limit){
+	//							int index = rand()%4;
+	//							limit = rand()%6+2;
+	//							direccion = options[index];
+	//							
 
 
-		  loop_rate.sleep();
-   
-  }
+	//							contador = 0;
+	//				   }
+							moverEnDireccion(direccion); 
+					 }
 
+	//		  cout << "DIRECCION ESCOGIDA: " << direccion << endl;
+				
+
+
+				loop_rate.sleep();
+		 
+		}
+	
 
   return 0;
 }

@@ -2,12 +2,13 @@
 #include "nav_msgs/OccupancyGrid.h"
 #include "nav_msgs/MapMetaData.h"
 #include "std_msgs/Header.h"
+#include "std_msgs/Float32.h"
 
 #include <iostream>
 
 using namespace std;
 
-ros::Publisher map_pub;
+ros::Publisher pub;
 
 int c = 0;
 
@@ -32,8 +33,11 @@ void mapCallback(const nav_msgs::OccupancyGrid::ConstPtr& msg)
 	
 
 	cout << "Nodos explorados = " << c/160 << " %" << endl;
+	std_msgs::Float32 msgMap;
+	msgMap.data = c/160;
+	pub.publish(msgMap);
+	ros::Duration(0.5).sleep(); // sleep for half a second
 	c = 0;
-	cout << endl;
 
 
 }
@@ -49,6 +53,7 @@ int main(int argc, char **argv)
 
 
   ros::Subscriber map_subs = n.subscribe("/map", 1000, mapCallback);
+  pub = n.advertise<std_msgs::Float32>("/percentageExplored", 1000);
 
   ros::Rate loop_rate(10);
 
