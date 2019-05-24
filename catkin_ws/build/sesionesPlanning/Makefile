@@ -56,28 +56,16 @@ CMAKE_BINARY_DIR = /home/sergio/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -90,37 +78,17 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -132,6 +100,38 @@ install/strip: preinstall
 install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,246 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_gennodejs: sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
-
-.PHONY : sesionesPlanning_gennodejs
-
-# fast build rule for target.
-sesionesPlanning_gennodejs/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/build
-.PHONY : sesionesPlanning_gennodejs/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_genlisp: sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
-
-.PHONY : sesionesPlanning_genlisp
-
-# fast build rule for target.
-sesionesPlanning_genlisp/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/build
-.PHONY : sesionesPlanning_genlisp/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages_eus: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages_eus
-
-# fast build rule for target.
-sesionesPlanning_generate_messages_eus/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/build
-.PHONY : sesionesPlanning_generate_messages_eus/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_geneus: sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
-
-.PHONY : sesionesPlanning_geneus
-
-# fast build rule for target.
-sesionesPlanning_geneus/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/build
-.PHONY : sesionesPlanning_geneus/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
-
-# Convenience name for target.
-assemble_cloud: sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
-
-.PHONY : assemble_cloud
-
-# fast build rule for target.
-assemble_cloud/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/assemble_cloud.dir/build.make sesionesPlanning/CMakeFiles/assemble_cloud.dir/build
-.PHONY : assemble_cloud/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages
-
-# fast build rule for target.
-sesionesPlanning_generate_messages/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/build
-.PHONY : sesionesPlanning_generate_messages/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages_nodejs: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages_nodejs
-
-# fast build rule for target.
-sesionesPlanning_generate_messages_nodejs/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/build
-.PHONY : sesionesPlanning_generate_messages_nodejs/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/rule
-
-# Convenience name for target.
-mueverobot_apunto: sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/rule
-
-.PHONY : mueverobot_apunto
-
-# fast build rule for target.
-mueverobot_apunto/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build.make sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build
-.PHONY : mueverobot_apunto/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
-
-# Convenience name for target.
-_sesionesPlanning_generate_messages_check_deps_apunto: sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
-
-.PHONY : _sesionesPlanning_generate_messages_check_deps_apunto
-
-# fast build rule for target.
-_sesionesPlanning_generate_messages_check_deps_apunto/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/build.make sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/build
-.PHONY : _sesionesPlanning_generate_messages_check_deps_apunto/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_genpy: sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
-
-.PHONY : sesionesPlanning_genpy
-
-# fast build rule for target.
-sesionesPlanning_genpy/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/build
-.PHONY : sesionesPlanning_genpy/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages_cpp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages_cpp
-
-# fast build rule for target.
-sesionesPlanning_generate_messages_cpp/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/build
-.PHONY : sesionesPlanning_generate_messages_cpp/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_gencpp: sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
-
-.PHONY : sesionesPlanning_gencpp
-
-# fast build rule for target.
-sesionesPlanning_gencpp/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/build
-.PHONY : sesionesPlanning_gencpp/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/detectObstacles.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/detectObstacles.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/detectObstacles.dir/rule
-
-# Convenience name for target.
-detectObstacles: sesionesPlanning/CMakeFiles/detectObstacles.dir/rule
-
-.PHONY : detectObstacles
-
-# fast build rule for target.
-detectObstacles/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/detectObstacles.dir/build.make sesionesPlanning/CMakeFiles/detectObstacles.dir/build
-.PHONY : detectObstacles/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages_py: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages_py
-
-# fast build rule for target.
-sesionesPlanning_generate_messages_py/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/build
-.PHONY : sesionesPlanning_generate_messages_py/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sesionesPlanning_generate_messages_lisp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
-
-.PHONY : sesionesPlanning_generate_messages_lisp
-
-# fast build rule for target.
-sesionesPlanning_generate_messages_lisp/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/build
-.PHONY : sesionesPlanning_generate_messages_lisp/fast
-
-# Convenience name for target.
-sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
-.PHONY : sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
-
-# Convenience name for target.
-moving_obstacles: sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
-
-.PHONY : moving_obstacles
-
-# fast build rule for target.
-moving_obstacles/fast:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/moving_obstacles.dir/build.make sesionesPlanning/CMakeFiles/moving_obstacles.dir/build
-.PHONY : moving_obstacles/fast
-
-# Convenience name for target.
 sesionesPlanning/CMakeFiles/publish_goal.dir/rule:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/publish_goal.dir/rule
 .PHONY : sesionesPlanning/CMakeFiles/publish_goal.dir/rule
@@ -435,6 +195,1011 @@ initial_position/fast:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/build
 .PHONY : initial_position/fast
 
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/reading_map.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/reading_map.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/reading_map.dir/rule
+
+# Convenience name for target.
+reading_map: sesionesPlanning/CMakeFiles/reading_map.dir/rule
+
+.PHONY : reading_map
+
+# fast build rule for target.
+reading_map/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/reading_map.dir/build.make sesionesPlanning/CMakeFiles/reading_map.dir/build
+.PHONY : reading_map/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
+
+# Convenience name for target.
+moving_obstacles: sesionesPlanning/CMakeFiles/moving_obstacles.dir/rule
+
+.PHONY : moving_obstacles
+
+# fast build rule for target.
+moving_obstacles/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/moving_obstacles.dir/build.make sesionesPlanning/CMakeFiles/moving_obstacles.dir/build
+.PHONY : moving_obstacles/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_genpy: sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/rule
+
+.PHONY : sesionesPlanning_genpy
+
+# fast build rule for target.
+sesionesPlanning_genpy/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_genpy.dir/build
+.PHONY : sesionesPlanning_genpy/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages_py: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages_py
+
+# fast build rule for target.
+sesionesPlanning_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_py.dir/build
+.PHONY : sesionesPlanning_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages_nodejs: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages_nodejs
+
+# fast build rule for target.
+sesionesPlanning_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs.dir/build
+.PHONY : sesionesPlanning_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_genlisp: sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/rule
+
+.PHONY : sesionesPlanning_genlisp
+
+# fast build rule for target.
+sesionesPlanning_genlisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_genlisp.dir/build
+.PHONY : sesionesPlanning_genlisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_geneus: sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/rule
+
+.PHONY : sesionesPlanning_geneus
+
+# fast build rule for target.
+sesionesPlanning_geneus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_geneus.dir/build
+.PHONY : sesionesPlanning_geneus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/execute_plan.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/execute_plan.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/execute_plan.dir/rule
+
+# Convenience name for target.
+execute_plan: sesionesPlanning/CMakeFiles/execute_plan.dir/rule
+
+.PHONY : execute_plan
+
+# fast build rule for target.
+execute_plan/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/execute_plan.dir/build.make sesionesPlanning/CMakeFiles/execute_plan.dir/build
+.PHONY : execute_plan/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages_cpp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages_cpp
+
+# fast build rule for target.
+sesionesPlanning_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp.dir/build
+.PHONY : sesionesPlanning_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
+
+# Convenience name for target.
+_sesionesPlanning_generate_messages_check_deps_apunto: sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/rule
+
+.PHONY : _sesionesPlanning_generate_messages_check_deps_apunto
+
+# fast build rule for target.
+_sesionesPlanning_generate_messages_check_deps_apunto/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/build.make sesionesPlanning/CMakeFiles/_sesionesPlanning_generate_messages_check_deps_apunto.dir/build
+.PHONY : _sesionesPlanning_generate_messages_check_deps_apunto/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages
+
+# fast build rule for target.
+sesionesPlanning_generate_messages/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages.dir/build
+.PHONY : sesionesPlanning_generate_messages/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+tf2_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
+.PHONY : tf2_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages_lisp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages_lisp
+
+# fast build rule for target.
+sesionesPlanning_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp.dir/build
+.PHONY : sesionesPlanning_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_lisp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
+.PHONY : tf2_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_eus
+
+# fast build rule for target.
+tf2_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
+.PHONY : tf2_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+geometry_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+.PHONY : geometry_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_gencpp: sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/rule
+
+.PHONY : sesionesPlanning_gencpp
+
+# fast build rule for target.
+sesionesPlanning_gencpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_gencpp.dir/build
+.PHONY : sesionesPlanning_gencpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_lisp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+.PHONY : geometry_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/rule
+
+.PHONY : nav_msgs_generate_messages_eus
+
+# fast build rule for target.
+nav_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
+.PHONY : nav_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tecnica_3.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tecnica_3.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tecnica_3.dir/rule
+
+# Convenience name for target.
+tecnica_3: sesionesPlanning/CMakeFiles/tecnica_3.dir/rule
+
+.PHONY : tecnica_3
+
+# fast build rule for target.
+tecnica_3/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tecnica_3.dir/build.make sesionesPlanning/CMakeFiles/tecnica_3.dir/build
+.PHONY : tecnica_3/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+
+.PHONY : std_msgs_generate_messages_eus
+
+# fast build rule for target.
+std_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_lisp: sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+
+.PHONY : roscpp_generate_messages_lisp
+
+# fast build rule for target.
+roscpp_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_py
+
+# fast build rule for target.
+geometry_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+.PHONY : geometry_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_generate_messages_eus: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/rule
+
+.PHONY : sesionesPlanning_generate_messages_eus
+
+# fast build rule for target.
+sesionesPlanning_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_eus.dir/build
+.PHONY : sesionesPlanning_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : nav_msgs_generate_messages_cpp
+
+# fast build rule for target.
+nav_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
+.PHONY : nav_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_nodejs: sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_eus: sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/rule
+
+.PHONY : tf_generate_messages_eus
+
+# fast build rule for target.
+tf_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/tf_generate_messages_eus.dir/build
+.PHONY : tf_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_eus: sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_cpp
+
+# fast build rule for target.
+geometry_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+.PHONY : geometry_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
+
+# Convenience name for target.
+assemble_cloud: sesionesPlanning/CMakeFiles/assemble_cloud.dir/rule
+
+.PHONY : assemble_cloud
+
+# fast build rule for target.
+assemble_cloud/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/assemble_cloud.dir/build.make sesionesPlanning/CMakeFiles/assemble_cloud.dir/build
+.PHONY : assemble_cloud/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_cpp
+
+# fast build rule for target.
+tf2_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
+.PHONY : tf2_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_cpp: sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+geometry_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+
+.PHONY : geometry_msgs_generate_messages_eus
+
+# fast build rule for target.
+geometry_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+.PHONY : geometry_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_py
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+.PHONY : actionlib_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
+
+# Convenience name for target.
+sesionesPlanning_gennodejs: sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/rule
+
+.PHONY : sesionesPlanning_gennodejs
+
+# fast build rule for target.
+sesionesPlanning_gennodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/build.make sesionesPlanning/CMakeFiles/sesionesPlanning_gennodejs.dir/build
+.PHONY : sesionesPlanning_gennodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_cpp: sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_eus: sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_generate_messages_eus
+
+# fast build rule for target.
+actionlib_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : nav_msgs_generate_messages_lisp
+
+# fast build rule for target.
+nav_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+.PHONY : nav_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : nav_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+nav_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+.PHONY : nav_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_py: sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/rule
+
+.PHONY : actionlib_generate_messages_py
+
+# fast build rule for target.
+actionlib_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+
+.PHONY : std_msgs_generate_messages_py
+
+# fast build rule for target.
+std_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/rule
+
+.PHONY : nav_msgs_generate_messages_py
+
+# fast build rule for target.
+nav_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+.PHONY : nav_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+.PHONY : actionlib_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+tf2_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+
+.PHONY : tf2_msgs_generate_messages_py
+
+# fast build rule for target.
+tf2_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
+.PHONY : tf2_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_nodejs: sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_py
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_lisp: sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/rule
+
+.PHONY : tf_generate_messages_lisp
+
+# fast build rule for target.
+tf_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/tf_generate_messages_lisp.dir/build
+.PHONY : tf_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_nodejs: sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+
+.PHONY : tf_generate_messages_nodejs
+
+# fast build rule for target.
+tf_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_py: sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/rule
+
+.PHONY : tf_generate_messages_py
+
+# fast build rule for target.
+tf_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_cpp: sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+.PHONY : actionlib_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_eus
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_lisp: sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_generate_messages_lisp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make sesionesPlanning/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+.PHONY : actionlib_generate_messages_lisp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+.PHONY : actionlib_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make sesionesPlanning/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make sesionesPlanning/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+.PHONY : sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_nodejs: sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
+
+.PHONY : actionlib_generate_messages_nodejs
+
+# fast build rule for target.
+actionlib_generate_messages_nodejs/fast:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make sesionesPlanning/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
+.PHONY : actionlib_generate_messages_nodejs/fast
+
 src/assembling_clouds.o: src/assembling_clouds.cpp.o
 
 .PHONY : src/assembling_clouds.o
@@ -462,32 +1227,32 @@ src/assembling_clouds.cpp.s:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/assemble_cloud.dir/build.make sesionesPlanning/CMakeFiles/assemble_cloud.dir/src/assembling_clouds.cpp.s
 .PHONY : src/assembling_clouds.cpp.s
 
-src/detectObstacles.o: src/detectObstacles.cpp.o
+src/execute_plan.o: src/execute_plan.cpp.o
 
-.PHONY : src/detectObstacles.o
+.PHONY : src/execute_plan.o
 
 # target to build an object file
-src/detectObstacles.cpp.o:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/detectObstacles.dir/build.make sesionesPlanning/CMakeFiles/detectObstacles.dir/src/detectObstacles.cpp.o
-.PHONY : src/detectObstacles.cpp.o
+src/execute_plan.cpp.o:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/execute_plan.dir/build.make sesionesPlanning/CMakeFiles/execute_plan.dir/src/execute_plan.cpp.o
+.PHONY : src/execute_plan.cpp.o
 
-src/detectObstacles.i: src/detectObstacles.cpp.i
+src/execute_plan.i: src/execute_plan.cpp.i
 
-.PHONY : src/detectObstacles.i
+.PHONY : src/execute_plan.i
 
 # target to preprocess a source file
-src/detectObstacles.cpp.i:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/detectObstacles.dir/build.make sesionesPlanning/CMakeFiles/detectObstacles.dir/src/detectObstacles.cpp.i
-.PHONY : src/detectObstacles.cpp.i
+src/execute_plan.cpp.i:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/execute_plan.dir/build.make sesionesPlanning/CMakeFiles/execute_plan.dir/src/execute_plan.cpp.i
+.PHONY : src/execute_plan.cpp.i
 
-src/detectObstacles.s: src/detectObstacles.cpp.s
+src/execute_plan.s: src/execute_plan.cpp.s
 
-.PHONY : src/detectObstacles.s
+.PHONY : src/execute_plan.s
 
 # target to generate assembly for a file
-src/detectObstacles.cpp.s:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/detectObstacles.dir/build.make sesionesPlanning/CMakeFiles/detectObstacles.dir/src/detectObstacles.cpp.s
-.PHONY : src/detectObstacles.cpp.s
+src/execute_plan.cpp.s:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/execute_plan.dir/build.make sesionesPlanning/CMakeFiles/execute_plan.dir/src/execute_plan.cpp.s
+.PHONY : src/execute_plan.cpp.s
 
 src/moving_detecting_obstacles.o: src/moving_detecting_obstacles.cpp.o
 
@@ -515,33 +1280,6 @@ src/moving_detecting_obstacles.s: src/moving_detecting_obstacles.cpp.s
 src/moving_detecting_obstacles.cpp.s:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/moving_obstacles.dir/build.make sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.s
 .PHONY : src/moving_detecting_obstacles.cpp.s
-
-src/mueverobot_apunto.o: src/mueverobot_apunto.cpp.o
-
-.PHONY : src/mueverobot_apunto.o
-
-# target to build an object file
-src/mueverobot_apunto.cpp.o:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build.make sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/src/mueverobot_apunto.cpp.o
-.PHONY : src/mueverobot_apunto.cpp.o
-
-src/mueverobot_apunto.i: src/mueverobot_apunto.cpp.i
-
-.PHONY : src/mueverobot_apunto.i
-
-# target to preprocess a source file
-src/mueverobot_apunto.cpp.i:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build.make sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/src/mueverobot_apunto.cpp.i
-.PHONY : src/mueverobot_apunto.cpp.i
-
-src/mueverobot_apunto.s: src/mueverobot_apunto.cpp.s
-
-.PHONY : src/mueverobot_apunto.s
-
-# target to generate assembly for a file
-src/mueverobot_apunto.cpp.s:
-	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/build.make sesionesPlanning/CMakeFiles/mueverobot_apunto.dir/src/mueverobot_apunto.cpp.s
-.PHONY : src/mueverobot_apunto.cpp.s
 
 src/publish_goal.o: src/publish_goal.cpp.o
 
@@ -597,55 +1335,163 @@ src/publish_initial_position.cpp.s:
 	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/initial_position.dir/build.make sesionesPlanning/CMakeFiles/initial_position.dir/src/publish_initial_position.cpp.s
 .PHONY : src/publish_initial_position.cpp.s
 
+src/readMap.o: src/readMap.cpp.o
+
+.PHONY : src/readMap.o
+
+# target to build an object file
+src/readMap.cpp.o:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/reading_map.dir/build.make sesionesPlanning/CMakeFiles/reading_map.dir/src/readMap.cpp.o
+.PHONY : src/readMap.cpp.o
+
+src/readMap.i: src/readMap.cpp.i
+
+.PHONY : src/readMap.i
+
+# target to preprocess a source file
+src/readMap.cpp.i:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/reading_map.dir/build.make sesionesPlanning/CMakeFiles/reading_map.dir/src/readMap.cpp.i
+.PHONY : src/readMap.cpp.i
+
+src/readMap.s: src/readMap.cpp.s
+
+.PHONY : src/readMap.s
+
+# target to generate assembly for a file
+src/readMap.cpp.s:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/reading_map.dir/build.make sesionesPlanning/CMakeFiles/reading_map.dir/src/readMap.cpp.s
+.PHONY : src/readMap.cpp.s
+
+src/tecnica_3.o: src/tecnica_3.cpp.o
+
+.PHONY : src/tecnica_3.o
+
+# target to build an object file
+src/tecnica_3.cpp.o:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tecnica_3.dir/build.make sesionesPlanning/CMakeFiles/tecnica_3.dir/src/tecnica_3.cpp.o
+.PHONY : src/tecnica_3.cpp.o
+
+src/tecnica_3.i: src/tecnica_3.cpp.i
+
+.PHONY : src/tecnica_3.i
+
+# target to preprocess a source file
+src/tecnica_3.cpp.i:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tecnica_3.dir/build.make sesionesPlanning/CMakeFiles/tecnica_3.dir/src/tecnica_3.cpp.i
+.PHONY : src/tecnica_3.cpp.i
+
+src/tecnica_3.s: src/tecnica_3.cpp.s
+
+.PHONY : src/tecnica_3.s
+
+# target to generate assembly for a file
+src/tecnica_3.cpp.s:
+	cd /home/sergio/catkin_ws/build && $(MAKE) -f sesionesPlanning/CMakeFiles/tecnica_3.dir/build.make sesionesPlanning/CMakeFiles/tecnica_3.dir/src/tecnica_3.cpp.s
+.PHONY : src/tecnica_3.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... rebuild_cache"
-	@echo "... install/local"
-	@echo "... list_install_components"
-	@echo "... sesionesPlanning_gennodejs"
-	@echo "... sesionesPlanning_genlisp"
-	@echo "... sesionesPlanning_generate_messages_eus"
-	@echo "... sesionesPlanning_geneus"
-	@echo "... assemble_cloud"
-	@echo "... sesionesPlanning_generate_messages"
-	@echo "... sesionesPlanning_generate_messages_nodejs"
-	@echo "... mueverobot_apunto"
-	@echo "... _sesionesPlanning_generate_messages_check_deps_apunto"
-	@echo "... sesionesPlanning_genpy"
-	@echo "... sesionesPlanning_generate_messages_cpp"
-	@echo "... sesionesPlanning_gencpp"
-	@echo "... detectObstacles"
-	@echo "... sesionesPlanning_generate_messages_py"
-	@echo "... sesionesPlanning_generate_messages_lisp"
 	@echo "... edit_cache"
-	@echo "... moving_obstacles"
+	@echo "... install/local"
 	@echo "... publish_goal"
 	@echo "... initial_position"
-	@echo "... test"
+	@echo "... reading_map"
+	@echo "... moving_obstacles"
+	@echo "... sesionesPlanning_genpy"
+	@echo "... sesionesPlanning_generate_messages_py"
+	@echo "... sesionesPlanning_generate_messages_nodejs"
+	@echo "... sesionesPlanning_genlisp"
+	@echo "... sesionesPlanning_geneus"
+	@echo "... execute_plan"
+	@echo "... sesionesPlanning_generate_messages_cpp"
+	@echo "... _sesionesPlanning_generate_messages_check_deps_apunto"
+	@echo "... sesionesPlanning_generate_messages"
+	@echo "... tf2_msgs_generate_messages_nodejs"
+	@echo "... sesionesPlanning_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_eus"
+	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... install"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... sesionesPlanning_gencpp"
+	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... install/strip"
+	@echo "... nav_msgs_generate_messages_eus"
+	@echo "... tecnica_3"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... geometry_msgs_generate_messages_py"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... sesionesPlanning_generate_messages_eus"
+	@echo "... nav_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... rebuild_cache"
+	@echo "... tf_generate_messages_eus"
+	@echo "... list_install_components"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... test"
+	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... assemble_cloud"
+	@echo "... tf2_msgs_generate_messages_cpp"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... geometry_msgs_generate_messages_eus"
+	@echo "... actionlib_msgs_generate_messages_py"
+	@echo "... sesionesPlanning_gennodejs"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_eus"
+	@echo "... nav_msgs_generate_messages_lisp"
+	@echo "... nav_msgs_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... nav_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_lisp"
+	@echo "... tf2_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_nodejs"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... tf_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... actionlib_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... actionlib_generate_messages_nodejs"
 	@echo "... src/assembling_clouds.o"
 	@echo "... src/assembling_clouds.i"
 	@echo "... src/assembling_clouds.s"
-	@echo "... src/detectObstacles.o"
-	@echo "... src/detectObstacles.i"
-	@echo "... src/detectObstacles.s"
+	@echo "... src/execute_plan.o"
+	@echo "... src/execute_plan.i"
+	@echo "... src/execute_plan.s"
 	@echo "... src/moving_detecting_obstacles.o"
 	@echo "... src/moving_detecting_obstacles.i"
 	@echo "... src/moving_detecting_obstacles.s"
-	@echo "... src/mueverobot_apunto.o"
-	@echo "... src/mueverobot_apunto.i"
-	@echo "... src/mueverobot_apunto.s"
 	@echo "... src/publish_goal.o"
 	@echo "... src/publish_goal.i"
 	@echo "... src/publish_goal.s"
 	@echo "... src/publish_initial_position.o"
 	@echo "... src/publish_initial_position.i"
 	@echo "... src/publish_initial_position.s"
+	@echo "... src/readMap.o"
+	@echo "... src/readMap.i"
+	@echo "... src/readMap.s"
+	@echo "... src/tecnica_3.o"
+	@echo "... src/tecnica_3.i"
+	@echo "... src/tecnica_3.s"
 .PHONY : help
 
 

@@ -9,15 +9,27 @@
 #include "sesionesPlanning/apunto.h"
 #include <tf/tf.h>
 #include <iostream>
+#include "std_msgs/Float32.h"
 
 using namespace std;
 
 geometry_msgs::Point punto_actual;
 int orientacionActual = 0;
 double angulo = 0;
-float alpha = 5;
+float alpha = 7;
 bool danger = false;
 ros::Publisher mueve_robot;
+bool end = false;
+
+float p = 200;
+
+void mapCallback(const std_msgs::Float32::ConstPtr& msg)
+{
+	if(msg->data > p) {
+		cout << "data " << msg->data << endl;
+		end = true;
+		exit(1);} // sleep for half a second}
+}
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
@@ -31,11 +43,11 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
    int lim_sup = lim_inf + n/3;
    for(int i = 0; i < n ; i++) {
      bool de_frente = (i >= lim_inf and i<=lim_sup); 
-	if(de_frente && isnan(msg->ranges[i]) or msg->ranges[i] < 0.6)
+	if(de_frente && isnan(msg->ranges[i]) or msg->ranges[i] < 0.8)
 		count++;
 
    }
-   cout << "Numero de obstaculos: " << count << endl;
+//   cout << "Numero de obstaculos: " << count << endl;
    if(count > 250)
 	danger = true;
    else
@@ -53,12 +65,12 @@ int getOrientation()
 
      int d = 9;
 
-	if(angulo_sin_signo > -alpha and angulo_sin_signo < alpha) d = 0;
+	if((angulo_sin_signo > -alpha and angulo_sin_signo < alpha) or (angulo_sin_signo > 360-alpha and angulo_sin_signo < 360+alpha)) d = 0;
 	else if (angulo_sin_signo > 90-alpha and angulo_sin_signo < 90+alpha) d = 1;
 	else if (angulo_sin_signo > 180-alpha and angulo_sin_signo <  180+alpha) d = 2;
 	else if (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha) {cout << "eoo" << endl; d = 3;}
 
-     cout << "D: " << d << " B: " << (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha) <<  endl;
+//     cout << "D: " << d << " B: " << (angulo_sin_signo > 270-alpha and angulo_sin_signo <  270+alpha) <<  endl;
      return d;
 }
 
@@ -82,7 +94,7 @@ void odomCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg)
 
 void avanza(float distancia){
 	geometry_msgs::Twist msg;
-    msg.linear.x = 0.5;
+    msg.linear.x = 0.3;
 //    ROS_INFO("Enviando %f como velocidad en x", msg.linear.x);
     mueve_robot.publish(msg);
     
@@ -223,6 +235,7 @@ int main(int argc, char **argv)
 
   ros::Subscriber scan_subs = n.subscribe("/scan", 1000, scanCallback);
   ros::Subscriber odom_subs = n.subscribe("/robot_pose_ekf/odom_combined", 1000, odomCallback);
+  ros::Subscriber map_explored = n.subscribe("/percentageExplored", 1000, mapCallback);
 
   ros::Rate loop_rate(10);
 
@@ -230,55 +243,78 @@ int main(int argc, char **argv)
   int direccion = 0;
   int contador = 0;
   int o;
-  while (ros::ok())
-  {
-    
+	int limit = 4;
+	bool first_time = true;
+	
+		while (ros::ok())
+		{
+			if(end) return 0;	  
 
-    ros::spinOnce();
+		  ros::spinOnce();
 
 
-    if(danger) {
-      o = getOrientation();
-	 cout << endl;
-	 cout << "ORIENTATION: " << o;
-	 cout << " DANGER: " << danger;
-	 switch(o) {
+		  if(danger) {
+				 o = getOrientation();
+	//			 cout << endl;
+				 cout << "ORIENTATION: " << o << endl;
+	//			 cout << " DANGER: " << danger << endl;
+				 switch(o) {
 
-		case 0:
-		case 3:
-			if((rand() % 10 +1) > 5)
-				direccion = 0;
-			else
-				direccion = 4;
-			break;
-		case 1:
-		case 2:
-			if((rand() % 10 +1) > 5)
-				direccion = 6;
-			else
-				direccion = 2;
-			break;			
+					case 0:
+					case 2:
+						if((rand() % 10 +1) > 5) {
+							cout << "0" << endl;
+							direccion = 0;
+							moverEnDireccion(0);
+							if(danger) { cout << "4" << endl;moverEnDireccion(4);direccion = 4;}
+						}
+						else {
+							cout << "4" << endl;
+							moverEnDireccion(4);direccion = 4;
+							if(danger)  { cout << "0" << endl;moverEnDireccion(0);direccion = 0;}
+						}
+						break;
+					case 1:
+					case 3:
+						if((rand() % 10 +1) > 5) {
+							cout << "6" << endl;
+							if(first_time) { moverEnDireccion(2);direccion=2;cout << "2 first" << endl; first_time=false;break;}
+							moverEnDireccion(6);direccion = 6;
+							if(danger)  { cout << "2" << endl;moverEnDireccion(2);direccion = 2;}
+						}
+						else {
+							cout << "2" << endl;
+							moverEnDireccion(2);direccion = 2;
+							if(danger)  { cout << "6" << endl;moverEnDireccion(6);direccion = 6;}
+						}
 
-      }
-      contador = 0;
-    } else {
-       contador++;
+						break;			
+						}
+						contador = 0;
+				} else {
+						 contador++;
+	//					 cout << "99" << endl;
 
-       if(contador>=3){
-	    int index = rand()%4;
-		direccion = options[index]; 
-		contador = 0;
-       }
-     }
+	//				   if(contador >= limit){
+	//							int index = rand()%4;
+	//							limit = rand()%6+2;
+	//							direccion = options[index];
+	//							
 
-    cout << "DIRECCION ESCOGIDA: " << direccion << endl;
-    
-    moverEnDireccion(direccion);
 
-    loop_rate.sleep();
-   
-  }
+	//							contador = 0;
+	//				   }
+							moverEnDireccion(direccion); 
+					 }
 
+	//		  cout << "DIRECCION ESCOGIDA: " << direccion << endl;
+				
+
+
+				loop_rate.sleep();
+		 
+		}
+	
 
   return 0;
 }

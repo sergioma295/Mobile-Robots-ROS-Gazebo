@@ -78,6 +78,7 @@ sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/ros/wall_timer_options.h
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/sensor_msgs/LaserScan.h
+sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/std_msgs/Float32.h
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/std_msgs/Float64.h
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
 sesionesPlanning/CMakeFiles/moving_obstacles.dir/src/moving_detecting_obstacles.cpp.o: /opt/ros/kinetic/include/std_msgs/String.h

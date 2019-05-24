@@ -59,7 +59,7 @@ sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp: /home/sergi
 /home/sergio/catkin_ws/devel/share/common-lisp/ros/sesionesPlanning/srv/apunto.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 /home/sergio/catkin_ws/devel/share/common-lisp/ros/sesionesPlanning/srv/apunto.lisp: /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sergio/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from sesionesPlanning/apunto.srv"
-	cd /home/sergio/catkin_ws/build/sesionesPlanning && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/share/common-lisp/ros/sesionesPlanning/srv
+	cd /home/sergio/catkin_ws/build/sesionesPlanning && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/share/common-lisp/ros/sesionesPlanning/srv
 
 sesionesPlanning_generate_messages_lisp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_lisp
 sesionesPlanning_generate_messages_lisp: /home/sergio/catkin_ws/devel/share/common-lisp/ros/sesionesPlanning/srv/apunto.lisp

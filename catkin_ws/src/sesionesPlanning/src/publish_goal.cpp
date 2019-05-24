@@ -16,6 +16,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
   pub = n.advertise<geometry_msgs::PoseStamped>("/move_base_simple/goal", 1000);
+  ros::Duration(1.0).sleep(); // sleep for half a second
 
  
   geometry_msgs::PoseStamped goal;
@@ -24,8 +25,8 @@ int main(int argc, char **argv)
   goal.header.stamp = ros::Time::now();
   goal.header.frame_id = "map";
 
-  goal.pose.position.x = 1.0;
-  goal.pose.position.y = 2.0;
+  goal.pose.position.x = 0.0;
+  goal.pose.position.y = 0.0;
   goal.pose.position.z = 0.0;
 
   goal.pose.orientation.x = 0.0;

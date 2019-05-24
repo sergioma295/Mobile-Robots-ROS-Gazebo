@@ -61,7 +61,7 @@ sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp: /home/sergio
 /home/sergio/catkin_ws/devel/include/sesionesPlanning/apunto.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 /home/sergio/catkin_ws/devel/include/sesionesPlanning/apunto.h: /opt/ros/kinetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sergio/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from sesionesPlanning/apunto.srv"
-	cd /home/sergio/catkin_ws/src/sesionesPlanning && /home/sergio/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/include/sesionesPlanning -e /opt/ros/kinetic/share/gencpp/cmake/..
+	cd /home/sergio/catkin_ws/src/sesionesPlanning && /home/sergio/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/include/sesionesPlanning -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 sesionesPlanning_generate_messages_cpp: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_cpp
 sesionesPlanning_generate_messages_cpp: /home/sergio/catkin_ws/devel/include/sesionesPlanning/apunto.h

@@ -3,7 +3,7 @@
  <!--    <node pkg="sesionesPlanning" type="detectObstacles" name="detectObstacles" launch-prefix="xterm -e" />
  
     <node pkg="sesionesPlanning" type="mueverobot_apunto" name="mueverobot_apunto"  launch-prefix="xterm -e" respawn="true" /> -->
-    <node pkg="sesionesPlanning" type="moving_obstacles" name="moving_obstacles"  launch-prefix="xterm -e" respawn="true" />
+    <node pkg="sesionesPlanning" type="moving_obstacles" name="moving_obstacles"  launch-prefix="xterm -e"  />
     
     <node type="laser_scan_assembler" pkg="laser_assembler" name="my_assembler">
     	<remap from="scan" to="scan"/>

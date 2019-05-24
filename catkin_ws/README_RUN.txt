@@ -52,11 +52,8 @@ roslaunch turtlebot_teleop keyboard_teleop.launch
 
 /*******************************************************************************************************************************************/********************************************************************************************************************************************/
 
-							     6.-  XXXXXXX
-
-/***************************************************************** XXXXXXXX ****************************************************************/
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
+							     6.-  amcl
+roslaunch turtlebot_navigation amcl_demo.launch map_file:=/home/sergio/catkin_ws/src/sesionesPlanning/maps_saved/map1_0.yaml 
 
 
 

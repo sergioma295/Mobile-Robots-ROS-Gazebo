@@ -59,7 +59,7 @@ sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs: /home/ser
 /home/sergio/catkin_ws/devel/share/gennodejs/ros/sesionesPlanning/srv/apunto.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/sergio/catkin_ws/devel/share/gennodejs/ros/sesionesPlanning/srv/apunto.js: /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sergio/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from sesionesPlanning/apunto.srv"
-	cd /home/sergio/catkin_ws/build/sesionesPlanning && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/share/gennodejs/ros/sesionesPlanning/srv
+	cd /home/sergio/catkin_ws/build/sesionesPlanning && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/sergio/catkin_ws/src/sesionesPlanning/srv/apunto.srv -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Inav_msgs:/opt/ros/kinetic/share/nav_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p sesionesPlanning -o /home/sergio/catkin_ws/devel/share/gennodejs/ros/sesionesPlanning/srv
 
 sesionesPlanning_generate_messages_nodejs: sesionesPlanning/CMakeFiles/sesionesPlanning_generate_messages_nodejs
 sesionesPlanning_generate_messages_nodejs: /home/sergio/catkin_ws/devel/share/gennodejs/ros/sesionesPlanning/srv/apunto.js

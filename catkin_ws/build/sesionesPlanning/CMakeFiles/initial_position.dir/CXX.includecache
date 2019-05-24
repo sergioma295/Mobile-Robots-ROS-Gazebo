@@ -13,6 +13,8 @@ std_msgs/String.h
 /home/sergio/catkin_ws/src/sesionesPlanning/src/std_msgs/String.h
 geometry_msgs/PoseWithCovarianceStamped.h
 /home/sergio/catkin_ws/src/sesionesPlanning/src/geometry_msgs/PoseWithCovarianceStamped.h
+geometry_msgs/Quaternion.h
+/home/sergio/catkin_ws/src/sesionesPlanning/src/geometry_msgs/Quaternion.h
 iostream
 -
 

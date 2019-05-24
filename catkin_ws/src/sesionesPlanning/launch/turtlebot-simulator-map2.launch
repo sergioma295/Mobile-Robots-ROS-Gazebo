@@ -1,0 +1,6 @@
+<launch>
+
+    <include file="/opt/ros/kinetic/share/turtlebot_gazebo/launch/map2_world.launch"></include>
+    <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch"></include> 
+
+</launch>
